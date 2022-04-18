@@ -22,7 +22,7 @@ headers = {
 
 
 productlinks = []
-for x in range(1, 6):
+for x in range(1):
     r = requests.get(
         f'https://www.sastodeal.com/home-and-living/fitness-health-care/gym-exercise-accessories.html?p={x}')
     soup = BeautifulSoup(r.content, 'lxml')
@@ -47,7 +47,7 @@ for link in productlinks:
         images = []
         for img in soup.findAll('img'):
             images.append(img.get('src'))
-            product_img_links.append(images)
+            product_img_links.append(images[6])
     except:
         images = 'no images'
         product_img_links.append(images)
@@ -103,4 +103,4 @@ for link in productlinks:
 dataset_ar = pd.DataFrame(list(zip(product_titles, product_img_links, product_description, product_price, product_rating, product_review)),
                           columns=['title', 'images', 'description', 'price', 'rating', 'review'])
 
-dataset_ar.to_csv('gym.csv')
+dataset_ar.to_csv('gam.csv')
