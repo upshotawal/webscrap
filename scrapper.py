@@ -24,7 +24,7 @@ headers = {
 productlinks = []
 for x in range(1, 5):
     r = requests.get(
-        f'https://www.sastodeal.com/books/academics.html?p={x}')
+        f'https://www.sastodeal.com/home-and-living/home-decor.html?p={x}')
     soup = BeautifulSoup(r.content, 'lxml')
     productlist = soup.find_all('li', class_='item product product-item')
     for item in productlist:
@@ -103,4 +103,4 @@ for link in productlinks:
 dataset_ar = pd.DataFrame(list(zip(product_titles, product_img_links, product_description, product_price, product_rating, product_review)),
                           columns=['title', 'images', 'description', 'price', 'rating', 'review'])
 
-dataset_ar.to_csv('book.csv')
+dataset_ar.to_csv('Appliences.csv')
